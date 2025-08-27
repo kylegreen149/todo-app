@@ -47,6 +47,16 @@ function App() {
     }
   }
 
+  const deleteTask = (id) => {
+    const deletedTask = tasks.find(task => task.id === id)
+    const comfirmDelete = window.confirm("Are you sure you want to delete this task?")
+    if (comfirmDelete) {
+      console.log("Successfully deleted task:", deletedTask.name)
+      setTasks(tasks.filter(task => task.id !== id))
+      // console.log(tasks)
+    }
+  }
+
   return (
     <div>
       <h1>My Personal To-Do List</h1>
@@ -59,7 +69,7 @@ function App() {
       />
 
       <ul>
-      {tasks.map(task => <Task key={task.id} name={task.name} urgency={task.urgency}/>)}  
+      {tasks.map(task => <Task key={task.id} name={task.name} urgency={task.urgency} deleteTask={() => deleteTask(task.id)}/>)}  
       </ul>
     </div>
   )
