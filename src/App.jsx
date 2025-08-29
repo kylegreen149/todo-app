@@ -57,6 +57,11 @@ function App() {
     }
   }
 
+  const updateTask = (updatedTask) => {
+    setTasks(prevTasks => prevTasks.map(task => task.id === updatedTask.id ? updatedTask : task))
+  }
+
+
   return (
     <div>
       <h1>My Personal To-Do List</h1>
@@ -67,9 +72,8 @@ function App() {
         newUrgency={newUrgency} 
         handleSubmit={handleSubmit}
       />
-
       <ul>
-      {tasks.map(task => <Task key={task.id} name={task.name} urgency={task.urgency} deleteTask={() => deleteTask(task.id)}/>)}  
+      {tasks.map(task => <Task key={task.id} task={task} deleteTask={() => deleteTask(task.id)} updateTask={updateTask}/>)}  
       </ul>
     </div>
   )
