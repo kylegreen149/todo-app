@@ -3,7 +3,7 @@ import EditTask from "./EditTask"
 
 const Task = ({task, deleteTask, updateTask}) => {
     const [isEditing, setIsEditing] = useState(false)
-    const [editTask, setEditTask] = useState("")
+    const [editTask, setEditTask] = useState(task.name)
 
     const handleEdit = () => setIsEditing(true)
     const handleCancel = () => setIsEditing(false)

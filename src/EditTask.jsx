@@ -5,7 +5,7 @@ const EditTask = ({editTask, setEditTask, cancel, save}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        save(editTask)
+        editTask.trim() ? save(editTask) : alert("Enter a valid task, with valid characters such as letters and numbers")
     }
 
     return (
