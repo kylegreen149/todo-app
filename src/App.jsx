@@ -42,6 +42,8 @@ function App() {
       console.log("You just added a new task!", newTask)
   
       setTasks([...tasks, newTask])
+
+      setNewTaskName("")
     } else {
       alert("Fill out all fields, and select a level of urgency")
     }
