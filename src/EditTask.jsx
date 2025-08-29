@@ -2,7 +2,7 @@ const EditTask = ({editTask, setEditTask, cancel, save}) => {
     const handleUpdate = (e) => {
         setEditTask(e.target.value)
     }
-    
+
     const handleSubmit = (e) => {
         e.preventDefault()
         save(editTask)
@@ -14,7 +14,7 @@ const EditTask = ({editTask, setEditTask, cancel, save}) => {
                 onChange={handleUpdate}
                 value={editTask}
             />
-            <button onClick={cancel}>Cancel</button>
+            <button type="button" onClick={cancel}>Cancel</button>
             <button type="submit">Save</button>
         </form>
     )
