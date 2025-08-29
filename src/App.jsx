@@ -19,17 +19,14 @@ function App() {
 
   const [newTaskName, setNewTaskName] = useState("")
   const [newUrgency, setNewUrgency] = useState("--")
+  const [sortOrder, setSortOrder] = useState("desc")
 
   // console.log(tasks)
 
-  const handleName = (e) => {
-    // console.log(e.target.value)
-    setNewTaskName(e.target.value)
-  }
-  
-  const handleUrgency = (e) => {
-    setNewUrgency(e.target.value)
-  }
+  const handleName = (e) => setNewTaskName(e.target.value)
+  const handleUrgency = (e) => setNewUrgency(e.target.value)
+
+  const handleSortOrder = (e) => setSortOrder(e.target.value)
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -44,6 +41,7 @@ function App() {
       setTasks([...tasks, newTask])
 
       setNewTaskName("")
+      setNewUrgency("--")
     } else {
       alert("Fill out all fields, and select a level of urgency")
     }
@@ -68,6 +66,14 @@ function App() {
     confirmDelete && setTasks([])
   }
 
+  const sortedTasks = tasks.slice().sort((a,b) => {
+    if (sortOrder === "asc") {
+      return a.urgency - b.urgency
+    } else {
+      return b.urgency - a.urgency
+    }
+  })
+
   return (
     <div>
       <h1>My Personal To-Do List</h1>
@@ -78,10 +84,19 @@ function App() {
         newUrgency={newUrgency} 
         handleSubmit={handleSubmit}
       />
-      {tasks.length > 0 && <button onClick={deleteAllTasks}>Delete All Tasks</button>}
-      {tasks.length === 0 && <h3>No tasks available</h3>}
+      {tasks.length > 0 && (
+        <>
+          <button onClick={deleteAllTasks}>Delete All Tasks</button>
+          <select value={sortOrder} onChange={handleSortOrder}>
+            <option value="none" disabled>-- Sort Tasks By Urgency --</option>
+            <option value="asc">Sort by Urgency (Ascending)</option>
+            <option value="desc">Sort by Urgency (Descending)</option>
+          </select>
+        </>
+      )}
+      {sortedTasks.length === 0 && <h3>No tasks available</h3>}
       <ul>
-      {tasks.map(task => <Task key={task.id} task={task} deleteTask={() => deleteTask(task.id)} updateTask={updateTask}/>)}  
+      {sortedTasks.map(task => <Task key={task.id} task={task} deleteTask={() => deleteTask(task.id)} updateTask={updateTask}/>)}  
       </ul>
     </div>
   )
