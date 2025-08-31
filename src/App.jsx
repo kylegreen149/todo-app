@@ -30,9 +30,11 @@ function App() {
         name: newTaskName,
         urgency: parseInt(newUrgency)
       }
-      console.log("You just added a new task!", newTask)
-  
-      setTasks([...tasks, newTask])
+      
+      axios.post("http://localhost:3001/tasks", newTask).then((res) => {
+        setTasks([...tasks, res.data])
+        console.log("You just added a new task!", res.data)
+      })
 
       setNewTaskName("")
       setNewUrgency("--")
