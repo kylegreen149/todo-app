@@ -46,9 +46,10 @@ function App() {
     const deletedTask = tasks.find(task => task.id === id)
     const comfirmDelete = window.confirm("Are you sure you want to delete this task?")
     if (comfirmDelete) {
-      console.log("Successfully deleted task:", deletedTask.name)
-      setTasks(tasks.filter(task => task.id !== id))
-      // console.log(tasks)
+      axios.delete(`http://localhost:3001/tasks/${id}`).then(() => {
+        console.log("Successfully deleted task:", deletedTask.name)
+        setTasks(tasks.filter(task => task.id !== id))
+      })
     }
   }
 
