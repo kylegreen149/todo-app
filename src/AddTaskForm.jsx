@@ -2,7 +2,7 @@ const AddTaskForm = ({handleName, handleUrgency, taskName, newUrgency, handleSub
     // console.log("Task Name:", taskName, "Urgency:", newUrgency)
     // console.log(newUrgency)
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="form-row" onSubmit={handleSubmit}>
             <input placeholder="Add Task Here" onChange={handleName} value={taskName} required/>
             <label>Level of Urgency</label>
             <select onChange={handleUrgency} value={newUrgency} required>

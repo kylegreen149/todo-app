@@ -1,0 +1,83 @@
+/* Global reset and base styles */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f5f7fa;
+  margin: 0;
+  padding: 2rem;
+  color: #2c3e50;
+}
+
+/* Main container */
+div {
+  max-width: 640px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+/* Headings */
+h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #7f8c8d;
+}
+
+h3 {
+  text-align: center;
+  color: #95a5a6;
+  margin-top: 2rem;
+}
+
+/* Form styling */
+.form-row {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+/* Input and select */
+input[type="text"],
+select {
+  flex: 1;
+  padding: 5px 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+/* Submit button */
+button[type="submit"] {
+  padding: 0.6rem 1rem;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #2980b9;
+}
+
+/* Responsive tweak */
+@media (max-width: 600px) {
+  .form-row {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  button[type="submit"] {
+    width: 100%;
+  }
+}
