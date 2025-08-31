@@ -26,7 +26,6 @@ function App() {
     e.preventDefault()
     if (newTaskName.trim() && newUrgency !== "--") {
       const newTask = {
-        id: tasks.length + 1,
         name: newTaskName,
         urgency: parseInt(newUrgency)
       }
