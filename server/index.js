@@ -3,6 +3,12 @@ const app = express() // Function that is used to create an Express application 
 
 app.use(express.json()) // Middleware that parses incoming requests with JSON payloads to access data easily
 
+const unknownEndpoint = (request, response) => {
+  response.status(404).send({ error: 'unknown endpoint' })
+}
+
+app.use(unknownEndpoint)
+
 let tasks = [
     {
         id: "1",
